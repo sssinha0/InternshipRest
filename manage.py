@@ -5,7 +5,11 @@ import sys
 
 
 def main():
+<<<<<<< HEAD
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'functionbasedapi.settings')
+=======
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'function.settings')
+>>>>>>> firsit commit
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
