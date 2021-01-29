@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  <title>Home</title>
+{% endblock title %}
+{% block body %}
+ {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>hello</strong>  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+   
+    {% endfor %}
+<div class='container'>
+<h1> Post Blog </h1>
+
+<form action='postblog' method='POST'>
+{% csrf_token %}
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Title</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="title name" name='title'>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+  
+  <textarea  type='text' class="form-control" id="exampleFormControlTextarea1" rows="3" name='pdes'></textarea>
+</div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock body %}

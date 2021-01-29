@@ -6,5 +6,7 @@ urlpatterns = [
     path('register',views.register,name='register'),
     path('login',views.usr_login,name='login'),
     path('home',views.home,name=''),
-    path('usr_logout',views.usr_logout,name='usr_logout')
+    path('usr_logout',views.usr_logout,name='usr_logout'),
+    path('postblog',views.postblog,name='postblog'),
+    path('blog_details/<int:id>',views.blog_details,name='blog_details')
 ]

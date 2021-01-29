@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
+from .models import BlogPost
 # Create your views here.
 def register(request):
     if request.method=='POST':
@@ -41,8 +42,25 @@ def usr_login(request):
             return redirect('login')
     return render(request,'login.html')
 def home(request):
-    return render(request,'home.html')
+    blog=BlogPost.objects.all()
+    # print(blog)
+    return render(request,'home.html',{'blogs':blog})
 def usr_logout(request):
     logout(request)
     return redirect(request,'home')
+def postblog(reqest):
+    if reqest.method=='POST':
+        title=reqest.POST.get('title')
+        des=reqest.POST.get('pdes')
+        blog=BlogPost(title=title,des=des,username=reqest.user)
+        blog.save()
+        messages.success(reqest,"you have successfully post the blog")
+        return redirect('postblog')
+        print(title,des)
+    return render(reqest,'PostBlog.html')
+def blog_details(reqest,id):
+    blog=BlogPost.objects.get(id=id)
+    print(blog)
+    return render(reqest,'blog_details.html',{'blog':blog})
+    
 
